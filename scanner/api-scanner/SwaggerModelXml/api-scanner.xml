@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>api-scanner</name>
+    </assembly>
+    <members>
+        <member name="M:api_scanner.Controllers.Web3Controller.#ctor">
+            <summary>
+            Web3Controller
+            </summary>
+        </member>
+        <member name="M:api_scanner.Controllers.Web3Controller.GetEventLogByTransactionHash(System.String)">
+            <summary>
+            Get TransactionHash EventLog
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
