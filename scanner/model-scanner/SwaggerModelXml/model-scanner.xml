@@ -49,5 +49,51 @@
             成功
             </summary>
         </member>
+        <member name="T:model_scanner.Web3.Contract.EventEventDTO">
+            <summary>
+            此地址裡面用的合約地址ABI裡面Event
+            </summary>
+            <seealso cref="T:Nethereum.ABI.FunctionEncoding.Attributes.IEventDTO" />
+        </member>
+        <member name="T:model_scanner.Web3.ResponseTransactionHashEventLogModel">
+            <summary>
+            ResponseTransactionHashEventLogModel
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.Symbol">
+            <summary>
+            Symbol
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.OrderID">
+            <summary>
+            OrderID
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.ExcelID">
+            <summary>
+            ExcelID
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.Price">
+            <summary>
+            Price
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.Qty">
+            <summary>
+            Qty
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.Side">
+            <summary>
+            Side
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.Timestamp">
+            <summary>
+            Timestamp
+            </summary>
+        </member>
     </members>
 </doc>

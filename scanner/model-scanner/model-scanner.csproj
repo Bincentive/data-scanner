@@ -11,7 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Web3\" />
+    <PackageReference Include="Nethereum.Web3" Version="3.4.0" />
+    <PackageReference Include="System.Text.Json" Version="4.6.0" />
   </ItemGroup>
 
 </Project>

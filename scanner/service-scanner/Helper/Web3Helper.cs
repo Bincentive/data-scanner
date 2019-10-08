@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using Nethereum.Contracts;
 using Nethereum.Web3;
 using service_scanner.Helper.Interface;
 
@@ -19,6 +21,24 @@ namespace service_scanner.Helper
         public Web3Helper(string rpcServer)
         {
             this._Web3 = new Web3(rpcServer);
+        }
+
+        /// <summary>
+        /// 取得TransactionReceiptLogs
+        /// </summary>
+        /// <typeparam name="TEventLogDto">The type of the event log dto.</typeparam>
+        /// <param name="transactionHash">The transaction hash.</param>
+        /// <returns></returns>
+        public async Task<List<EventLog<TEventLogDto>>> GetTransactionReceiptForEventLogsAsync<TEventLogDto>(string transactionHash) where TEventLogDto : new()
+        {
+            //LogTraderTradingTransaction 
+            var receipt = await _Web3.Eth.Transactions.GetTransactionReceipt.SendRequestAsync(transactionHash);
+            if (receipt == null)
+            {
+                return new List<EventLog<TEventLogDto>>();
+            }
+            var eventLogs = receipt.Logs.DecodeAllEvents<TEventLogDto>();
+            return eventLogs;
         }
 
         #region IDisposable Support

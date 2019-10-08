@@ -9,12 +9,17 @@
             Web3Controller
             </summary>
         </member>
+        <member name="F:api_scanner.Controllers.Web3Controller._web3Service">
+            <summary>
+            IWeb3Service
+            </summary>
+        </member>
         <member name="M:api_scanner.Controllers.Web3Controller.#ctor(service_scanner.Service.Interface.IWeb3Service)">
             <summary>
             Web3Controller
             </summary>
         </member>
-        <member name="M:api_scanner.Controllers.Web3Controller.GetEventLogByTransactionHash(System.String)">
+        <member name="M:api_scanner.Controllers.Web3Controller.GetEventLogByTransactionHashAsync(System.String)">
             <summary>
             Get TransactionHash EventLog
             </summary>
