@@ -9,7 +9,7 @@
             Web3Controller
             </summary>
         </member>
-        <member name="M:api_scanner.Controllers.Web3Controller.#ctor">
+        <member name="M:api_scanner.Controllers.Web3Controller.#ctor(service_scanner.Service.Interface.IWeb3Service)">
             <summary>
             Web3Controller
             </summary>

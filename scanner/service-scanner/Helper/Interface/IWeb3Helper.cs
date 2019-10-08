@@ -4,7 +4,7 @@ using System.Text;
 
 namespace service_scanner.Helper.Interface
 {
-    interface IWeb3Helper
+    public interface IWeb3Helper
     {
     }
 }

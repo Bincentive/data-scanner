@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using service_scanner.Helper;
+using service_scanner.Helper.Interface;
+using service_scanner.Service;
+using service_scanner.Service.Interface;
 
 namespace api_scanner
 {
@@ -42,6 +46,8 @@ namespace api_scanner
                     };
                 };
             });
+            services.AddScoped<IWeb3Service, Web3Service>();
+            services.AddScoped<IWeb3Helper>(options => new Web3Helper(Configuration["RPC:ServerUrl"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
