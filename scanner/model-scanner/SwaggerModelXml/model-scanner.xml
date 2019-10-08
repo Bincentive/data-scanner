@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>model-scanner</name>
+    </assembly>
+    <members>
+        <member name="T:model_scanner.Common.ApiResponse`1">
+            <summary>
+            ApiResponse
+            </summary>
+            <typeparam name="TData"></typeparam>
+        </member>
+        <member name="P:model_scanner.Common.ApiResponse`1.Status">
+            <summary>
+            狀態
+            </summary>
+        </member>
+        <member name="P:model_scanner.Common.ApiResponse`1.Data">
+            <summary>
+            回傳資料
+            </summary>
+        </member>
+        <member name="P:model_scanner.Common.ApiResponse`1.Message">
+            <summary>
+            回傳訊息
+            </summary>
+        </member>
+        <member name="M:model_scanner.Common.ApiResponse`1.#ctor(model_scanner.Enum.StatusType,`0,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:model_scanner.Common.ApiResponse`1"/> class.
+            </summary>
+            <param name="status">status</param>
+            <param name="data">data</param>
+            <param name="message">message</param>
+        </member>
+        <member name="M:model_scanner.Common.ApiResponse`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:model_scanner.Common.ApiResponse`1"/> class.
+            </summary>
+            <param name="data">data</param>
+        </member>
+        <member name="T:model_scanner.Enum.StatusType">
+            <summary>
+            StatusType
+            </summary>
+        </member>
+        <member name="F:model_scanner.Enum.StatusType.Success">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="T:model_scanner.Web3.Contract.EventEventDTO">
+            <summary>
+            此地址裡面用的合約地址ABI裡面Event
+            </summary>
+            <seealso cref="T:Nethereum.ABI.FunctionEncoding.Attributes.IEventDTO" />
+        </member>
+        <member name="T:model_scanner.Web3.ResponseTransactionHashEventLogModel">
+            <summary>
+            ResponseTransactionHashEventLogModel
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.Symbol">
+            <summary>
+            Symbol
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.OrderID">
+            <summary>
+            OrderID
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.ExcelID">
+            <summary>
+            ExcelID
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.Price">
+            <summary>
+            Price
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.Qty">
+            <summary>
+            Qty
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.Side">
+            <summary>
+            Side
+            </summary>
+        </member>
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.Timestamp">
+            <summary>
+            Timestamp
+            </summary>
+        </member>
+    </members>
+</doc>
