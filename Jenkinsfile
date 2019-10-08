@@ -8,7 +8,7 @@ try {
     configFileProvider([configFile(fileId: 'ci-global-config', variable: 'CI_GLOBAL_CONFIG_FILE')]) {
         globalConfig = readYaml(file: CI_GLOBAL_CONFIG_FILE)
     }
-    def DOCKER_IMAGE_NAME = 'app-net-scanner'
+    def DOCKER_IMAGE_NAME = 'bi-app-net-scanner'
     def ECR_IMAGE_NAME = "${globalConfig.aws.ecr.server}/${DOCKER_IMAGE_NAME}"
     def ECR_IMAGE_TAG = null
     def WORKSPACE = pwd()
@@ -32,7 +32,7 @@ try {
                 }
 
                 if (env.gitlabTargetBranch == 'stg') {
-                    VersionValidate(globalConfig, 'app-net-scanner-stg', PACKAGE_VERSION)
+                    VersionValidate(globalConfig, 'bi-app-net-scanner-stg', PACKAGE_VERSION)
                 }
 
                 if (env.gitlabActionType == 'PUSH') {
@@ -81,15 +81,15 @@ try {
                 }
                 if (env.gitlabBranch == 'master') {
                     stage('Rollout') {
-                        AWSrolloutManual(globalConfig, 'aws-tasks/task-def-prod.template.json', ECR_IMAGE_TAG, 'api-prod-cluster', 'app-net-scanner-prod', PACKAGE_VERSION)
+                        AWSrolloutManual(globalConfig, 'aws-tasks/task-def-prod.template.json', ECR_IMAGE_TAG, 'api-prod-cluster', 'bi-app-net-scanner-prod', PACKAGE_VERSION)
                     }
                 } else if (env.gitlabBranch == 'stg') {
                     stage('Rollout') {
-                        AWSrolloutAuto(globalConfig, 'aws-tasks/task-def-stg.template.json', ECR_IMAGE_TAG, 'api-stg-cluster', 'app-net-scanner-stg')
+                        AWSrolloutAuto(globalConfig, 'aws-tasks/task-def-stg.template.json', ECR_IMAGE_TAG, 'api-stg-cluster', 'bi-app-net-scanner-stg')
                     }
                 } else if (env.gitlabBranch == 'develop') {
                     stage('Rollout') {
-                        AWSrolloutAuto(globalConfig, 'aws-tasks/task-def-sit.template.json', ECR_IMAGE_TAG, 'api-sit-cluster', 'app-net-scanner-sit')
+                        AWSrolloutAuto(globalConfig, 'aws-tasks/task-def-sit.template.json', ECR_IMAGE_TAG, 'api-sit-cluster', 'bi-app-net-scanner-sit')
                     }
                 }
             }

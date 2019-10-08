@@ -1,13 +1,13 @@
 {
-  "family": "app-net-scanner-stg",
-  "taskRoleArn": "arn:aws:iam::475636345445:role/ECSappNotifyRoleProd",
+  "family": "bi-app-net-scanner-stg",
+  "taskRoleArn": "arn:aws:iam::475636345445:role/ECSTaskRole",
   "containerDefinitions": [{
       "name": "dotnet",
       "image": "{{WILL_BE_FILLED_DYNAMICALLY}}",
       "memoryReservation": 128,
       "essential": true,
       "portMappings": [{
-        "hostPort": 200,
+        "hostPort": 700,
         "containerPort": 80,
         "protocol": "tcp"
       }],
@@ -18,13 +18,13 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/api-stg-cluster/app-net-scanner-stg",
+          "awslogs-group": "/ecs/api-stg-cluster/bi-app-net-scanner-stg",
           "awslogs-region": "ap-northeast-2"
         }
       },
       "dockerLabels": {
         "traefik.enable": "true",
-        "traefik.frontend.rule": "Host:app-net-scanner-stg.bincentive.com",
+        "traefik.frontend.rule": "Host:bi-app-net-scanner-stg.bincentive.com",
         "traefik.frontend.entryPoints": "private-stg-http,private-stg-https"
       }
     }
