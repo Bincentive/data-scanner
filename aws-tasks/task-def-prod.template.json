@@ -1,0 +1,36 @@
+{
+  "family": "app-notify-prod",
+  "taskRoleArn": "arn:aws:iam::475636345445:role/ECSappNotifyRoleProd",
+  "containerDefinitions": [{
+      "name": "dotnet",
+      "image": "{{WILL_BE_FILLED_DYNAMICALLY}}",
+      "memoryReservation": 128,
+      "essential": true,
+      "portMappings": [{
+        "hostPort": 200,
+        "containerPort": 80,
+        "protocol": "tcp"
+      }],
+      "environment": [{
+        "name": "ASPNETCORE_ENVIRONMENT",
+        "value": "Production"
+      }],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/api-prod-cluster/app-notify-prod",
+          "awslogs-region": "ap-northeast-2"
+        }
+      },
+      "dockerLabels": {
+        "traefik.enable": "true",
+        "traefik.frontend.rule": "Host:app-notify-prod.bincentive.com",
+        "traefik.frontend.entryPoints": "publicbackend-http,publicbackend-https"
+      }
+    }
+ ],
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "networkMode": "bridge"
+}
