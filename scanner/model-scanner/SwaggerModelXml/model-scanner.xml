@@ -49,6 +49,86 @@
             成功
             </summary>
         </member>
+        <member name="F:model_scanner.Enum.StatusType.InportDataException">
+            <summary>
+            輸入資料異常
+            </summary>
+        </member>
+        <member name="F:model_scanner.Enum.StatusType.RemoteApiException">
+            <summary>
+            遠端API發生異常
+            </summary>
+        </member>
+        <member name="T:model_scanner.Etherscan.ResponseContractLogModel">
+            <summary>
+            ResponseContractLogModel
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogModel.Status">
+            <summary>
+            狀態(1:OK)
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogModel.Message">
+            <summary>
+            訊息
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogModel.Result">
+            <summary>
+            回傳結果
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogResultModel.Address">
+            <summary>
+            address
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogResultModel.Topics">
+            <summary>
+            topics
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogResultModel.Data">
+            <summary>
+            data
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogResultModel.BlockNumber">
+            <summary>
+            blockNumber
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogResultModel.TimeStamp">
+            <summary>
+            timeStamp
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogResultModel.GasPrice">
+            <summary>
+            gasPrice
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogResultModel.GasUsed">
+            <summary>
+            gasUsed
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogResultModel.LogIndex">
+            <summary>
+            logIndex
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogResultModel.TransactionHash">
+            <summary>
+            transactionHash
+            </summary>
+        </member>
+        <member name="P:model_scanner.Etherscan.ResponseContractLogResultModel.TransactionIndex">
+            <summary>
+            transactionIndex
+            </summary>
+        </member>
         <member name="T:model_scanner.Web3.Contract.EventEventDTO">
             <summary>
             此地址裡面用的合約地址ABI裡面Event

@@ -25,6 +25,16 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:api_scanner.Controllers.Web3Controller.GetContractEventsTxnHashAsync(System.String,System.Nullable{System.Int64},System.String,System.String)">
+            <summary>
+            Get Contract Events TxnHash Async
+            </summary>
+            <param name="contractAddress">合約地址</param>
+            <param name="fromBlock">從哪一個Block數</param>
+            <param name="topic0">topic0</param>
+            <param name="apiKey">Etherscan申請的ApiKey</param>
+            <returns></returns>
+        </member>
         <member name="T:api_scanner.Program">
             <summary>
             Program
@@ -60,6 +70,18 @@
             </summary>
             <param name="app"></param>
             <param name="env"></param>
+        </member>
+        <member name="M:api_scanner.Startup.GetXmlCommentsPath">
+            <summary>
+            Get project xml
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="M:api_scanner.Startup.GetModelXmlCommentsPath">
+            <summary>
+            Get Model Xml
+            </summary>
+            <returns>string</returns>
         </member>
     </members>
 </doc>
