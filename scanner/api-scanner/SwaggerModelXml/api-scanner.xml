@@ -34,6 +34,9 @@
             <param name="topic0">topic0</param>
             <param name="apiKey">Etherscan申請的ApiKey</param>
             <returns></returns>
+            <remarks>
+            ApiKey:None(rate limit of 5 requests/sec)
+            </remarks>
         </member>
         <member name="T:api_scanner.Program">
             <summary>
@@ -70,18 +73,6 @@
             </summary>
             <param name="app"></param>
             <param name="env"></param>
-        </member>
-        <member name="M:api_scanner.Startup.GetXmlCommentsPath">
-            <summary>
-            Get project xml
-            </summary>
-            <returns>string</returns>
-        </member>
-        <member name="M:api_scanner.Startup.GetModelXmlCommentsPath">
-            <summary>
-            Get Model Xml
-            </summary>
-            <returns>string</returns>
         </member>
     </members>
 </doc>

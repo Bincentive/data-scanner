@@ -49,6 +49,9 @@ namespace api_scanner.Controllers
         /// <param name="topic0">topic0</param>
         /// <param name="apiKey">Etherscan申請的ApiKey</param>
         /// <returns></returns>
+        /// <remarks>
+        /// ApiKey:None(rate limit of 5 requests/sec)
+        /// </remarks>
         [HttpGet("contract/{contractAddress}/transactionHash")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<List<ResponseContractLogResultModel>>))]
         public async Task<ApiResponse<List<ResponseContractLogResultModel>>> GetContractEventsTxnHashAsync(
