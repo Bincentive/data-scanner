@@ -69,7 +69,6 @@ try {
                     stage('Build') {
                         docker.image("mcr.microsoft.com/dotnet/core/sdk:3.0-buster").inside("-u root") {
                             sh "dotnet publish scanner/api-scanner/api-scanner.csproj -c Release -r linux-x64 --self-contained true"
-                            sh "dotnet publish Service_Notify/BCNT_API/BCNT_API.csproj -c Release"
                         }
                     }
                     stage('Deploy Image') {
