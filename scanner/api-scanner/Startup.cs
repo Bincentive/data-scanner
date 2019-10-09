@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -46,6 +47,7 @@ namespace api_scanner
                     };
                 };
             });
+            services.AddHttpClient();
             services.AddScoped<IWeb3Service, Web3Service>();
             services.AddScoped<IWeb3Helper>(options => new Web3Helper(Configuration["RPC:ServerUrl"]));
         }
