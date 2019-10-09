@@ -11,7 +11,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Web3\" />
+    <None Remove="SwaggerModelXml\model-scanner.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="SwaggerModelXml\model-scanner.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nethereum.Web3" Version="3.4.0" />
+    <PackageReference Include="System.Text.Json" Version="4.6.0" />
   </ItemGroup>
 
 </Project>
