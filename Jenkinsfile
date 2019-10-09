@@ -26,7 +26,7 @@ try {
     gitlabCommitStatus {
         docker.withServer(globalConfig.docker.host) {
             stage('Validate') {
-                PACKAGE_VERSION = readJSON(file: 'Service_Notify/BCNT_API/appsettings.json').version
+                PACKAGE_VERSION = readJSON(file: 'scanner/api-scanner/appsettings.json').version
                 if(!(PACKAGE_VERSION ==~ /\d+\.\d+\.\d+/)) {
                     error "Package version ${PACKAGE_VERSION} is not a valid version number. (Expect x.y.z)"
                 }
