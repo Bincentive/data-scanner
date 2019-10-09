@@ -31,12 +31,13 @@ namespace api_scanner
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            var version = Configuration.GetSection("version");
             services.AddOpenApiDocument(document =>
             {
                 document.DocumentName = "openapi";
                 document.PostProcess = document =>
                 {
-                    document.Info.Version = "v1";
+                    document.Info.Version = "v"+ version.Value;
                     document.Info.Title = "Scanner";
                     document.Info.Description = "";
                     document.Info.Contact = new NSwag.OpenApiContact
