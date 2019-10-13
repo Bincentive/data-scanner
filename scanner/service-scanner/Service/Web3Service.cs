@@ -50,12 +50,17 @@ namespace service_scanner.Service
         /// </summary>
         /// <param name="transactionHash">The transaction hash.</param>
         /// <returns></returns>
-        public async Task<List<ResponseTransactionHashEventLogModel>> GetTransactionHashEventLogAsync(string transactionHash)
+        public async Task<ApiResponse<List<ResponseTransactionHashEventLogModel>>> GetTransactionHashEventLogAsync(string transactionHash)
         {
-            var eventLogs = await this._web3Helper.GetTransactionReceiptForEventLogsAsync<EventEventDTO>(transactionHash);
             var result = new List<ResponseTransactionHashEventLogModel>();
             try
             {
+                if (string.IsNullOrWhiteSpace(transactionHash))
+                {
+                    return new ApiResponse<List<ResponseTransactionHashEventLogModel>>(result);
+                }
+                var eventLogs =
+                    await this._web3Helper.GetTransactionReceiptForEventLogsAsync<EventEventDTO>(transactionHash);
                 foreach (var item in eventLogs)
                 {
                     var eventLog =
@@ -63,14 +68,22 @@ namespace service_scanner.Service
                             .tradingTx);
                     result.Add(eventLog);
                 }
-            }
-            catch (Exception e)
-            {
-                this._logger.LogError("TransactionHash: "+transactionHash+",Format Json Exception.");
-                return new List<ResponseTransactionHashEventLogModel>();
-            }
-            return result;
 
+                return new ApiResponse<List<ResponseTransactionHashEventLogModel>>(result);
+            }
+            catch (Nethereum.JsonRpc.Client.RpcResponseException e)
+            {
+                result.Clear();
+                this._logger.LogError(e.InnerException?.ToString());
+                return new ApiResponse<List<ResponseTransactionHashEventLogModel>>(StatusType.RemoteApiException,
+                    result, "TransactionHash Error.");
+            }
+            catch (Exception)
+            {
+                result.Clear();
+                this._logger.LogError("TransactionHash: " + transactionHash + ",Format Json Exception.");
+                return new ApiResponse<List<ResponseTransactionHashEventLogModel>>(result);
+            }
         }
 
         /// <summary>

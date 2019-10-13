@@ -54,11 +54,13 @@ try {
             if (env.gitlabTargetBranch == 'stg' || env.gitlabTargetBranch == 'develop') {
                 stage('Test') {
                     docker.image("mcr.microsoft.com/dotnet/core/sdk:3.0-buster").inside("-u root") {
+                        sh "dotnet test scanner/service-scanner-test/service-scanner-test.csproj"
                     }
                 }
                 if (env.gitlabActionType == 'MERGE') {
                     stage('TestBuild') {
                         docker.image("mcr.microsoft.com/dotnet/core/sdk:3.0-buster").inside("-u root") {
+                            sh "dotnet build scanner/api-scanner/api-scanner.csproj"
                         }
                     }
                 }
