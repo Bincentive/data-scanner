@@ -23,15 +23,7 @@ namespace service_scanner.Helper
 
         public Web3Helper(string rpcServer)
         {
-            if (rpcServer == "")
-            {
-                this._Web3 = new Web3();
-            }
-            else
-            {
-                this._Web3 = new Web3(rpcServer);
-            }
-            
+            this._Web3 = rpcServer == "" ? new Web3() : new Web3(rpcServer);
         }
 
         /// <summary>
