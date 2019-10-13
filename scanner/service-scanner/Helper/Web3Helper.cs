@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Nethereum.Contracts;
 using Nethereum.Web3;
@@ -20,7 +19,7 @@ namespace service_scanner.Helper
 
         public Web3Helper(string rpcServer)
         {
-            this._Web3 = new Web3(rpcServer);
+            this._Web3 = rpcServer == "" ? new Web3() : new Web3(rpcServer);
         }
 
         /// <summary>
@@ -31,14 +30,26 @@ namespace service_scanner.Helper
         /// <returns></returns>
         public async Task<List<EventLog<TEventLogDto>>> GetTransactionReceiptForEventLogsAsync<TEventLogDto>(string transactionHash) where TEventLogDto : new()
         {
-            //LogTraderTradingTransaction 
-            var receipt = await _Web3.Eth.Transactions.GetTransactionReceipt.SendRequestAsync(transactionHash);
-            if (receipt == null)
+            if (string.IsNullOrWhiteSpace(transactionHash))
             {
                 return new List<EventLog<TEventLogDto>>();
             }
-            var eventLogs = receipt.Logs.DecodeAllEvents<TEventLogDto>();
-            return eventLogs;
+            //LogTraderTradingTransaction 
+            try
+            {
+                var receipt = await _Web3.Eth.Transactions.GetTransactionReceipt.SendRequestAsync(transactionHash);
+                if (receipt == null)
+                {
+                    return new List<EventLog<TEventLogDto>>();
+                }
+
+                var eventLogs = receipt.Logs.DecodeAllEvents<TEventLogDto>();
+                return eventLogs;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         #region IDisposable Support
@@ -77,7 +88,5 @@ namespace service_scanner.Helper
             // GC.SuppressFinalize(this);
         }
         #endregion
-
-
     }
 }
