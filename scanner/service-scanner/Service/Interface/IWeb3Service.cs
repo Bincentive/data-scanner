@@ -18,7 +18,7 @@ namespace service_scanner.Service.Interface
         /// </summary>
         /// <param name="transactionHash">The transaction hash.</param>
         /// <returns></returns>
-        Task<List<ResponseTransactionHashEventLogModel>> GetTransactionHashEventLogAsync(string transactionHash);
+        Task<ApiResponse<List<ResponseTransactionHashEventLogModel>>> GetTransactionHashEventLogAsync(string transactionHash);
 
         /// <summary>
         /// 取得 Etherscan Transaction Log

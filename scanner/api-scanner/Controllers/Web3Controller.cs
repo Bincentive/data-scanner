@@ -38,7 +38,7 @@ namespace api_scanner.Controllers
         public async Task<ApiResponse<List<ResponseTransactionHashEventLogModel>>> GetEventLogByTransactionHashAsync(string transactionHash)
         {
             var result = await this._web3Service.GetTransactionHashEventLogAsync(transactionHash);
-            return new ApiResponse<List<ResponseTransactionHashEventLogModel>>(result);
+            return result;
         }
 
         /// <summary>

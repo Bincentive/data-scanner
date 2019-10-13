@@ -15,7 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "model", "model", "{B1A65571
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "model-scanner", "model-scanner\model-scanner.csproj", "{142296FF-EE04-4FD0-80A5-8876E3D45BF1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unittest", "unittest", "{8654421A-1BD9-49BB-98D9-2104BA0314C1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "testcase", "testcase", "{76A9F9CE-FE98-44B8-A5E4-88C55B6CC46C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "service-scanner-test", "service-scanner-test\service-scanner-test.csproj", "{528A7EDD-91AE-4C2B-AB6A-CE11FDCB924B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{142296FF-EE04-4FD0-80A5-8876E3D45BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{142296FF-EE04-4FD0-80A5-8876E3D45BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{142296FF-EE04-4FD0-80A5-8876E3D45BF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{528A7EDD-91AE-4C2B-AB6A-CE11FDCB924B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{528A7EDD-91AE-4C2B-AB6A-CE11FDCB924B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{528A7EDD-91AE-4C2B-AB6A-CE11FDCB924B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{528A7EDD-91AE-4C2B-AB6A-CE11FDCB924B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{4AD334D8-A730-4415-A093-C84ED3A16ABE} = {324BD4D1-DFE0-40E5-97A3-F31A8E88C5C3}
 		{A06D35B2-F8EC-43B4-B8C4-80184764555D} = {950EFB45-7D06-4AD3-B745-A915914A8C86}
 		{142296FF-EE04-4FD0-80A5-8876E3D45BF1} = {B1A65571-9A0A-4017-893C-61F5306B7AAF}
+		{528A7EDD-91AE-4C2B-AB6A-CE11FDCB924B} = {76A9F9CE-FE98-44B8-A5E4-88C55B6CC46C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81F21A74-54C8-4F80-85D4-FF86E4FBD523}
