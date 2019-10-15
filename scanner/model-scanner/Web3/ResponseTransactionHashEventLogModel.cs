@@ -21,10 +21,11 @@ namespace model_scanner.Web3
         [JsonPropertyName("OrderID")]
         public string OrderID { get; set; }
         /// <summary>
-        /// ExcelID
+        /// ExecID
         /// </summary>
-        [JsonPropertyName("ExcelID")]
-        public string ExcelID { get; set; }
+        [JsonPropertyName("ExecID")]
+        public string ExecID { get; set; }
+
         /// <summary>
         /// Price
         /// </summary>
