@@ -63,24 +63,31 @@ namespace service_scanner.Service
                     await this._web3Helper.GetTransactionReceiptForEventLogsAsync<EventEventDTO>(transactionHash);
                 foreach (var item in eventLogs)
                 {
-                    var eventLog =
-                        System.Text.Json.JsonSerializer.Deserialize<ResponseTransactionHashEventLogModel>(item.Event
-                            .tradingTx);
-                    result.Add(eventLog);
+                    try
+                    {
+                        var eventLog =
+                            System.Text.Json.JsonSerializer.Deserialize<ResponseTransactionHashEventLogModel>(item.Event
+                                .tradingTx);
+                        result.Add(eventLog);
+                    }
+                    catch (Exception e)
+                    {
+                        this._logger.LogError(item.Event.tradingTx+":"+e.InnerException?.ToString());
+                        continue;
+                    }
                 }
 
                 return new ApiResponse<List<ResponseTransactionHashEventLogModel>>(result);
             }
             catch (Nethereum.JsonRpc.Client.RpcResponseException e)
             {
-                result.Clear();
+
                 this._logger.LogError(e.InnerException?.ToString());
                 return new ApiResponse<List<ResponseTransactionHashEventLogModel>>(StatusType.RemoteApiException,
                     result, "TransactionHash Error.");
             }
             catch (Exception)
             {
-                result.Clear();
                 this._logger.LogError("TransactionHash: " + transactionHash + ",Format Json Exception.");
                 return new ApiResponse<List<ResponseTransactionHashEventLogModel>>(result);
             }
