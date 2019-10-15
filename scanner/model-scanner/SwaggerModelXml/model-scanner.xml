@@ -150,9 +150,9 @@
             OrderID
             </summary>
         </member>
-        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.ExcelID">
+        <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.ExecID">
             <summary>
-            ExcelID
+            ExecID
             </summary>
         </member>
         <member name="P:model_scanner.Web3.ResponseTransactionHashEventLogModel.Price">
