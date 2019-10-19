@@ -25,7 +25,6 @@ namespace model_scanner.Web3
         /// </summary>
         [JsonPropertyName("ExecID")]
         public string ExecID { get; set; }
-
         /// <summary>
         /// Price
         /// </summary>
