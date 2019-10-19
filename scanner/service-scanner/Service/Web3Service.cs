@@ -81,7 +81,6 @@ namespace service_scanner.Service
             }
             catch (Nethereum.JsonRpc.Client.RpcResponseException e)
             {
-
                 this._logger.LogError(e.InnerException?.ToString());
                 return new ApiResponse<List<ResponseTransactionHashEventLogModel>>(StatusType.RemoteApiException,
                     result, "TransactionHash Error.");

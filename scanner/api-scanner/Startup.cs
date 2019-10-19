@@ -74,7 +74,10 @@ namespace api_scanner
 
             app.UseOpenApi();
             app.UseSwaggerUi3();
-
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
