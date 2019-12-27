@@ -6,7 +6,7 @@ namespace api_scanner
     /// <summary>
     /// Program
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         /// Main

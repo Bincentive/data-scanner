@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using model_scanner.Common;
@@ -11,6 +13,7 @@ using model_scanner.Enum;
 using model_scanner.Etherscan;
 using model_scanner.Web3;
 using model_scanner.Web3.Contract;
+using Nethereum.JsonRpc.Client;
 using service_scanner.Helper.Interface;
 using service_scanner.Service.Interface;
 
@@ -104,13 +107,13 @@ namespace service_scanner.Service
             string contractAddress, long? fromBlock,string topic0,string apiKey)
         {
             var result = new List<ResponseContractLogResultModel>();
-            var queryString = new StringBuilder();
+            
             if (string.IsNullOrWhiteSpace(contractAddress))
             {
                 return new ApiResponse<List<ResponseContractLogResultModel>>(StatusType.InportDataException, result,
                     "Contract Address is Null.");
             }
-
+            var queryString = new StringBuilder();
             queryString.Append("&address=" + contractAddress);
 
             if (fromBlock.HasValue)
@@ -141,15 +144,29 @@ namespace service_scanner.Service
             {
                 queryString.Append("&topic0=" + topic0);
             }
-            var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("https://api.etherscan.io");
-            var apiResult = await client.GetStringAsync("/api?module=logs&action=getLogs&toBlock=latest"+queryString);
-            var apiResultModel = System.Text.Json.JsonSerializer.Deserialize<ResponseContractLogModel>(apiResult);
-            if (apiResultModel.Status == "1")
+
+            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            using (var client = _httpClientFactory.CreateClient())
             {
-                return new ApiResponse<List<ResponseContractLogResultModel>>(apiResultModel.Result);
+                client.BaseAddress = new Uri("https://api.etherscan.io");
+                var apiResult = await client
+                    .SendAsync(
+                        new HttpRequestMessage(HttpMethod.Get,
+                            "/api?module=logs&action=getLogs&toBlock=latest" + queryString),
+                        HttpCompletionOption.ResponseHeadersRead, cts.Token).ConfigureAwait(false);
+                using (var contentStream = await apiResult.Content.ReadAsStreamAsync())
+                {
+                    var apiResultModel = await JsonSerializer.DeserializeAsync<ResponseContractLogModel>(contentStream, cancellationToken: cts.Token);
+                    if (apiResultModel.Status == "1")
+                    {
+                        return new ApiResponse<List<ResponseContractLogResultModel>>(apiResultModel.Result);
+                    }
+                    return new ApiResponse<List<ResponseContractLogResultModel>>(StatusType.RemoteApiException, result, apiResultModel.Message);
+                }
+                
+               
             }
-            return new ApiResponse<List<ResponseContractLogResultModel>>(StatusType.RemoteApiException, result, apiResultModel.Message);
+                
         }
     }
 }
