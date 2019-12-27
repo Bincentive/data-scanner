@@ -18,16 +18,17 @@ namespace service_scanner_test.Service
     {
         private IWeb3Service _web3Service;
 
-        private IWeb3Helper _web3Helper;
+        private readonly IWeb3Helper _web3Helper;
 
-        private IHttpClientFactory _httpClientFactory;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        private ILogger<Web3Service> _logger;
+        private readonly ILogger<Web3Service> _logger;
 
         //每一次run 一個test case 跑一次
         [SetUp]
         public void Setup()
         {
+            // Method intentionally left empty.
         }
 
         //只會建立一次

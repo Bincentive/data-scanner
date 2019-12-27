@@ -14,7 +14,7 @@ namespace service_scanner.Helper
     /// <summary>
     /// Web3
     /// </summary>
-    public class Web3Helper:IWeb3Helper,IDisposable
+    public class Web3Helper : IWeb3Helper, IDisposable
     {
         /// <summary>
         /// The web3
@@ -38,22 +38,14 @@ namespace service_scanner.Helper
             {
                 return new List<EventLog<TEventLogDto>>();
             }
-            //LogTraderTradingTransaction 
-            try
+            var receipt = await _Web3.Eth.Transactions.GetTransactionReceipt.SendRequestAsync(transactionHash);
+            if (receipt == null)
             {
-                var receipt = await _Web3.Eth.Transactions.GetTransactionReceipt.SendRequestAsync(transactionHash);
-                if (receipt == null)
-                {
-                    return new List<EventLog<TEventLogDto>>();
-                }
+                return new List<EventLog<TEventLogDto>>();
+            }
 
-                var eventLogs = receipt.Logs.DecodeAllEvents<TEventLogDto>();
-                return eventLogs;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            var eventLogs = receipt.Logs.DecodeAllEvents<TEventLogDto>();
+            return eventLogs;
         }
 
         #region IDisposable Support
@@ -84,7 +76,7 @@ namespace service_scanner.Helper
         // }
 
         // 加入這個程式碼的目的在正確實作可處置的模式。
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             // 請勿變更這個程式碼。請將清除程式碼放入上方的 Dispose(bool disposing) 中。
             Dispose(true);
